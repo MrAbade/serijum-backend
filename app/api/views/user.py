@@ -6,7 +6,7 @@ from ..models import Users
 from marshmallow.exceptions import ValidationError
 from ...error_handling import UnauthorizedUser
 
-from ..schemas.user import UserSchema
+from ..schemas.users import UserSchema
 
 bp_user = Blueprint('users', __name__, url_prefix='/api/v1/user')
 
