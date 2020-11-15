@@ -14,7 +14,7 @@ source venv/bin/activate
 ```zsh
 pip install -r requirements.txt
 ```
- - Initialize migrations folder
+ - Initialize migrations folder | 
 __OBS: make sure you have postgres running into your system__
 
 ```zsh
