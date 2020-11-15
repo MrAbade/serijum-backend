@@ -14,7 +14,19 @@ source venv/bin/activate
 ```zsh
 pip install -r requirements.txt
 ```
- - run:
+ - Initialize migrations folder
+```zsh
+flask db init
+```
+ - Get all migrations from models
+```zsh
+flask db migrate
+```
+ - Run all migrations
+```zsh
+flask db upgrade
+```
+ - Run server
 ```zsh
 gunicorn --bind 0.0.0.0:5000 app
 ```
