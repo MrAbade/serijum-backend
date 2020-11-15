@@ -15,9 +15,11 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
  - Initialize migrations folder
+ 
  <br>
- __OBS: make sure you have postgres running into your system__
+ OBS: make sure you have postgres running into your system__
  <br>
+
 ```zsh
 flask db init
 ```
