@@ -53,7 +53,8 @@ def signup():
 
         deserialized_user = us.dump(user)
 
-    except ValidationError:
+    except Exception as error:
+        print(error)
         return jsonify({'msg': 'Some user attributes are missing'}), 400
 
     return deserialized_user, 201
