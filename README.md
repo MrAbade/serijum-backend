@@ -6,27 +6,34 @@
 ```zsh
 python -m venv venv
 ```
+
  - Enter into the virtual envirornment
+
 ```zsh
 source venv/bin/activate
 ```
+
  - Install all dependencies
 ```zsh
 pip install -r requirements.txt
 ```
+
  - Initialize migrations folder | 
 __OBS: make sure you have postgres running into your system__
 
 ```zsh
 flask db init
 ```
+
  - Get all migrations from models
 ```zsh
 flask db migrate
 ```
+
  - Run all migrations
 ```zsh
 flask db upgrade
+
 ```
  - Run server
 ```zsh
