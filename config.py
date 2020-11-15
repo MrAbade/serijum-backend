@@ -19,4 +19,4 @@ class TestingConfig(Config):
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql://mrabade:pain321123@localhost/serijum'
+    SQLALCHEMY_DATABASE_URI = 'postgres://inotqwmcewevsu:a3eb29a30d247ff51123a32810a0158999038351b412029b8cd0912b513670c5@ec2-34-200-106-49.compute-1.amazonaws.com:5432/da4oc91oglovo0'
