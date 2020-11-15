@@ -14,8 +14,9 @@ def find_all():
     ss = SuiteSchema()
 
     suites = Suites.query.all()
-
-    return ss.dump(suites, many=True), 200
+    serialized_suites = ss.dump(suites, many=True)
+    
+    return {'suites': serialized_suites}, 200
 
 
 @bp_suite.route('/<int:suite_id>', methods=['GET'])
