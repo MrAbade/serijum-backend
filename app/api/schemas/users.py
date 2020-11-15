@@ -7,5 +7,5 @@ class UserSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = Users
         exclude = ('id', 'password',)
-        include_relationships = True
+        include_relationships = False
         load_instance = True
