@@ -1,7 +1,7 @@
 from flask import Blueprint, current_app, request, jsonify
 from flask_jwt_extended import create_access_token, create_refresh_token
 
-from ..models import User
+from ..models import Users
 
 from marshmallow.exceptions import ValidationError
 from ...error_handling import UnauthorizedUser
@@ -17,7 +17,7 @@ def login():
         email = request.json['email']
         password = request.json['password']
 
-        user = User.query.filter_by(email=email).first()
+        user = Users.query.filter_by(email=email).first()
 
         if not user.password_verify(password):
             raise UnauthorizedUser()

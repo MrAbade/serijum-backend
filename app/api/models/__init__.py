@@ -1,4 +1,3 @@
-from re import U
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -9,4 +8,7 @@ def configure(app):
     app.db = db
 
 
-from ..models.user import User
+from ..models.users import Users
+from ..models.categories import Categories
+from ..models.suites import Suites
+from ..models.schedules import Schedules

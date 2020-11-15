@@ -1,9 +1,9 @@
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
-from ..models import User
+from ..models import Users
 
 
 class UserSchema(SQLAlchemyAutoSchema):
     class Meta:
-        model = User
+        model = Users
         include_relationships = True
         load_instance = True
