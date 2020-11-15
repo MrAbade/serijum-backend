@@ -40,4 +40,7 @@ flask db upgrade
 gunicorn --bind 0.0.0.0:5000 app
 ```
 
+## Available routes
+
 ### Have a nice experience with Serijum Server 😁😉
+
