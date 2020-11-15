@@ -1,5 +1,5 @@
 from flask import Blueprint, current_app, request, jsonify
-from flask_jwt_extended import create_access_token, create_refresh_token
+from flask_jwt_extended import create_access_token
 from datetime import timedelta
 
 from ..models import Users
@@ -24,14 +24,12 @@ def login():
             raise UnauthorizedUser()
 
         access_token = create_access_token(
-            identity=user.id, expires_delta=timedelta(days=7))
-        refresh_token = create_refresh_token(identity=user.id)
+            identity=user.id, expires_delta=timedelta(days=14))
 
         us = UserSchema()
         deserialized_user = us.dump(user)
 
         deserialized_user['access-token'] = access_token
-        deserialized_user['refresh-token'] = refresh_token
 
     except KeyError:
         return jsonify({'msg': 'Make sure that valid email and password was passed'}), 400
