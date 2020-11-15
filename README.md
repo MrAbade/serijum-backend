@@ -1,5 +1,58 @@
 # Serijum Backend Project
 
+## Available routes
+- Signup
+```http
+POST /api/v1/user/signup HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Gigle Catabriga",
+    "email": "catabriga.gigle@mail.com",
+    "password": "example_pass_123"
+}
+```
+
+ - Login
+ ```http
+POST /api/v1/user/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "janice@mail.com",
+    "password": "example_pass_123"
+}
+ ```
+
+ - List Suites by Categories 
+```http
+GET /api/v1/suite HTTP/1.1
+Authorization: Bearer <jwt-token>
+```
+
+ - Find for a specific suite informations
+```http
+GET /api/v1/suite/<int:suite_id> HTTP/1.1
+Authorization: Bearer <jwt-token>
+```
+
+ - Create a schedule for an user
+```http
+POST /api/v1/schedule/<int:suite_id> HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <jwt-token>
+```
+
+ - List the scheduling of an user
+```http
+GET /api/v1/schedule HTTP/1.1
+Authorization: Bearer <jwt-token>
+```
+
+<br>
+<br>
+<br>
+
 ## How can i run this project?
 
  - Create a virtual envirornment
@@ -33,14 +86,8 @@ flask db migrate
  - Run all migrations
 ```zsh
 flask db upgrade
-
 ```
  - Run server
 ```zsh
-gunicorn --bind 0.0.0.0:5000 app
+gunicorn --bind 0.0.0.0:5000 -w 4 wsgi:app
 ```
-
-## Available routes
-
-### Have a nice experience with Serijum Server 😁😉
-
