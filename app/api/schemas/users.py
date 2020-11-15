@@ -6,5 +6,6 @@ from ..models import Users
 class UserSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = Users
+        exclude = ('id', 'password',)
         include_relationships = True
         load_instance = True
