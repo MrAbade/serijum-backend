@@ -52,6 +52,8 @@ def signup():
         current_app.db.session.commit()
 
         deserialized_user = us.dump(user)
+        del deserialized_user['id']
+        del deserialized_user['password']
 
     except Exception as error:
         print(error)
