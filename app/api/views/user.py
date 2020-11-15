@@ -29,8 +29,8 @@ def login():
         us = UserSchema()
         deserialized_user = us.dump(user)
         
-        deserialized_user['id']
-        deserialized_user['password']
+        del deserialized_user['id']
+        del deserialized_user['password']
         deserialized_user['access-token'] = access_token
 
     except KeyError:
