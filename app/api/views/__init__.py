@@ -21,3 +21,6 @@ def configure(app):
 
     from .schedule import bp_schedule
     app.register_blueprint(bp_schedule)
+
+    from .isbusy import bp_isbusy
+    app.register_blueprint(bp_isbusy)
