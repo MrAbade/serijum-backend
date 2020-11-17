@@ -24,3 +24,6 @@ def configure(app):
 
     from .isbusy import bp_isbusy
     app.register_blueprint(bp_isbusy)
+
+    from .category import bp_category
+    app.register_blueprint(bp_category)

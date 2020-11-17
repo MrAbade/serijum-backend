@@ -1,12 +1,16 @@
 
 from flask import Blueprint, current_app
+from flask.globals import request
 from flask.json import jsonify
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt_identity
+
+from ...error_handling import UnauthorizedUser
 
 from ..models import Suites
+from ..models import Users
+from ..models import Categories
 
 from ..schemas.suites import SuiteSchema
-from ..schemas.categories import CategorySchema
 
 bp_suite = Blueprint('suite', __name__, url_prefix='/api/v1/suite')
 
@@ -43,3 +47,32 @@ def find_by_id(suite_id):
     suite = Suites.query.get(suite_id)
 
     return ss.dump(suite, many=False), 200
+
+
+@bp_suite.route('/<int:category_id>', methods=['POST'])
+@jwt_required
+def create_suite(category_id):
+    try:
+        session = current_app.db.session
+
+        user_id = get_jwt_identity()
+        user = Users.query.get(user_id)
+        if not user.is_admin:
+            raise UnauthorizedUser
+        
+        suite_attributes = {
+            'suite_number': request.json['suite_number'],
+            'suite_name': request.json['suite_name'],
+            'suite_description': request.json['suite_description'],
+            'category_id': category_id
+        }
+
+        suite = Suites(**suite_attributes)
+
+        session.add(suite)
+        session.commit()
+
+        return SuiteSchema().dump(suite), 200
+
+    except UnauthorizedUser:
+        return jsonify({'msg': 'You are not authorized'}), 401
