@@ -5,6 +5,8 @@ from datetime import timedelta
 from ..models import Users
 
 from marshmallow.exceptions import ValidationError
+from sqlalchemy.exc import IntegrityError
+from psycopg2.errors import UniqueViolation
 from ...error_handling import UnauthorizedUser
 
 from ..schemas.users import UserSchema
@@ -57,8 +59,12 @@ def signup():
         del deserialized_user['id']
         del deserialized_user['password']
 
-    except Exception as error:
-        print(error)
-        return jsonify({'msg': 'Some user attributes are missing'}), 400
+        return deserialized_user, 201
 
-    return deserialized_user, 201
+    except (UniqueViolation, IntegrityError) as error:
+        print(error)
+        return jsonify({'msg': 'User already exists'}), 400
+
+    except ValidationError:
+        print(ValidationError)
+        return jsonify({'msg': 'Some user attributes are missing'}), 400
