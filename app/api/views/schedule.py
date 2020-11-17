@@ -1,6 +1,5 @@
 from flask import Blueprint, current_app, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from collections import namedtuple
 from datetime import datetime
 
 from ...error_handling import IdWasNotFound
@@ -93,10 +92,9 @@ def find_all():
         """, {'val': user_id})
 
         schedules_serialized = [
-            {
-                key: value
-                for key, value in zip(schedules.keys(), row)
-            } for row in schedules.fetchall()]
+            {key: value for key, value in zip(schedules.keys(), row)}
+            for row in schedules.fetchall()
+        ]
 
         return jsonify(schedules_serialized), 200
 
