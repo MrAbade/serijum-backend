@@ -49,7 +49,9 @@ def create_category():
         session = current_app.db.session
         cs = CategorySchema()
 
-        category = cs.load(request.json, session=session)
+        category_name = request.json.get('name')
+
+        category = Categories(name=category_name)
         session.add(category)
         session.commit()
 
