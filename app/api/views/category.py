@@ -47,7 +47,6 @@ def list_all():
 def create_category():
     try:
         session = current_app.db.session
-        cs = CategorySchema()
 
         category_name = request.json.get('name')
 
@@ -55,7 +54,7 @@ def create_category():
         session.add(category)
         session.commit()
 
-        return cs.dump(category), 201
+        return jsonify({'id': category.id, 'name': category.name}), 201
 
     except Exception as error:
         print(error)
