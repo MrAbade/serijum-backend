@@ -7,8 +7,6 @@ from ...error_handling import IdWasNotFound
 from ..models import Users
 from ..models import Categories
 
-from ..schemas.categories import CategorySchema
-
 bp_category = Blueprint('category', __name__, url_prefix='/api/v1/category')
 
 
@@ -29,13 +27,19 @@ def verify_authorization():
 
 @bp_category.route('/', methods=['GET'])
 def list_all():
+    print('[MEU LOG] -> Bati na rota!!!')
     try:
+        print('[MEU LOG] -> Entrei no TRY!!!')
+
         category_list = Categories.query.all()
+        print('[MEU LOG] -> Executei a query!!!')
 
         category_without_suites = [
             {'id': category.id, 'name': category.name}
             for category in category_list
         ]
+        print('[MEU LOG] -> Executei o List Comprehension!!!')
+
 
         return jsonify(category_without_suites), 200
     except Exception as error:
