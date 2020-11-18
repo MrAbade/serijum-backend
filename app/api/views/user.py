@@ -1,6 +1,7 @@
 from flask import Blueprint, current_app, request, jsonify
 from flask_jwt_extended import create_access_token
 from datetime import timedelta
+from os import getenv
 
 from ..models import Users
 
@@ -30,9 +31,10 @@ def login():
 
         us = UserSchema()
         deserialized_user = us.dump(user)
-        
+
         del deserialized_user['id']
         del deserialized_user['password']
+        del deserialized_user['is_admin']
         deserialized_user['access-token'] = access_token
 
     except KeyError:
@@ -48,8 +50,16 @@ def signup():
     try:
         session = current_app.db.session
 
+        body = {**request.json}
+        if body.get('admin_key'):
+            del body['admin_key']
+
         us = UserSchema()
-        user = us.load(request.json, session=session)
+        user = us.load(body, session=session)
+
+        admin_key = request.json.get('admin_key')
+        if admin_key == getenv('ADMIN_KEY'):
+            user.is_admin = True
 
         user.gen_hash()
         current_app.db.session.add(user)
@@ -58,6 +68,7 @@ def signup():
         deserialized_user = us.dump(user)
         del deserialized_user['id']
         del deserialized_user['password']
+        del deserialized_user['is_admin']
 
         return deserialized_user, 201
 
