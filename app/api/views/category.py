@@ -7,8 +7,6 @@ from ...error_handling import IdWasNotFound
 from ..models import Users
 from ..models import Categories
 
-from ..schemas.categories import CategorySchema
-
 bp_category = Blueprint('category', __name__, url_prefix='/api/v1/category')
 
 
