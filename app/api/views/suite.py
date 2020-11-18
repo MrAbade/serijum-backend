@@ -4,11 +4,11 @@ from flask.globals import request
 from flask.json import jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
+from sqlalchemy.exc import IntegrityError
 from ...error_handling import UnauthorizedUser
 
 from ..models import Suites
 from ..models import Users
-from ..models import Categories
 
 from ..schemas.suites import SuiteSchema
 
@@ -76,3 +76,6 @@ def create_suite(category_id):
 
     except UnauthorizedUser:
         return jsonify({'msg': 'You are not authorized'}), 401
+
+    except IntegrityError:
+        return jsonify({'msg': 'The category id does not exist'}), 400
