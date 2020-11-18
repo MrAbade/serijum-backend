@@ -76,6 +76,6 @@ def signup():
         print(error)
         return jsonify({'msg': 'User already exists'}), 400
 
-    except ValidationError:
-        print(ValidationError)
+    except ValidationError as error:
+        print(error)
         return jsonify({'msg': 'Some user attributes are missing'}), 400
