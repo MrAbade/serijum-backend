@@ -27,18 +27,13 @@ def verify_authorization():
 
 @bp_category.route('/', methods=['GET'])
 def list_all():
-    print('[MEU LOG] -> Bati na rota!!!')
     try:
-        print('[MEU LOG] -> Entrei no TRY!!!')
-
-        category_list = Categories.query.all()
-        print('[MEU LOG] -> Executei a query!!!')
+        category_list = Categories.query.order_by(Categories.id.asc()).all()
 
         category_without_suites = [
             {'id': category.id, 'name': category.name}
             for category in category_list
         ]
-        print('[MEU LOG] -> Executei o List Comprehension!!!')
 
 
         return jsonify(category_without_suites), 200
