@@ -1,7 +1,8 @@
 from flask import Blueprint, current_app, request, jsonify
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, jwt_required
 from datetime import timedelta
 from os import getenv
+from flask_jwt_extended.utils import get_jwt_identity
 
 from ..models import Users
 
@@ -79,3 +80,35 @@ def signup():
     except ValidationError as error:
         print(error)
         return jsonify({'msg': 'Some user attributes are missing'}), 400
+
+
+@bp_user.route('/list', methods=['GET'])
+@jwt_required
+def list_all_users():
+    try:
+        user_id = get_jwt_identity()
+
+        admin = Users.query.get(user_id)
+        if not admin.is_admin:
+            raise UnauthorizedUser
+
+        user_list = Users.query.all()
+
+        get_noadmin_users = [
+            {
+                'name': user.name,
+                'email': user.email
+            }
+            for user in user_list
+            if not user.is_admin
+        ]
+
+        return jsonify(get_noadmin_users), 200
+
+    except UnauthorizedUser as error:
+        print(error)
+        return jsonify({'msg': 'You do not have permission to access this route'}), 401
+
+    except Exception as error:
+        print(error)
+        return jsonify({'msg': 'Cannot list all users'}), 500 
