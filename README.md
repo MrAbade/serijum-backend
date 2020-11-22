@@ -41,6 +41,13 @@ Authorization: Bearer <jwt-token>
 POST /api/v1/schedule/<int:suite_id> HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer <jwt-token>
+
+{
+	"is_overnight_stay": false,
+	"date_of_overnight_stay": "2020-11-23 20-0-0",
+	"entry_datetime": "2020-11-25 20-0-0",
+	"exit_datetime": "2020-11-25 23-0-0"
+}
 ```
 
  - List the scheduling of an user
