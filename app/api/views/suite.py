@@ -22,7 +22,7 @@ def find_all():
         session = current_app.db.session
 
         suites_with_categories = session.execute("""
-        SELECT categories.name as category_name, suites.suite_name, suites.suite_number, suites.suite_description
+        SELECT categories.name as category_name, suites.id as suite_id, suites.suite_name, suites.suite_number, suites.suite_description
         FROM suites
         JOIN categories ON suites.category_id=categories.id
         ORDER BY (categories.name)
