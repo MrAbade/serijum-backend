@@ -31,7 +31,7 @@ def create(suite_id):
             date_overnight = request.json['date_of_overnight_stay']
 
             date_overnight = datetime.strptime(
-                date_overnight, '%Y-%m-%d %H-%M-%S')
+                date_overnight, '%Y-%m-%d %H:%M:%S')
 
             schedule = Schedules(
                 is_overnight_stay=True,
@@ -51,8 +51,8 @@ def create(suite_id):
         entry_datetime = request.json['entry_datetime']
         exit_datetime = request.json['exit_datetime']
 
-        entry_datetime = datetime.strptime(entry_datetime, '%Y-%m-%d %H-%M-%S')
-        exit_datetime = datetime.strptime(exit_datetime, '%Y-%m-%d %H-%M-%S')
+        entry_datetime = datetime.strptime(entry_datetime, '%Y-%m-%d %H:%M:%S')
+        exit_datetime = datetime.strptime(exit_datetime, '%Y-%m-%d %H:%M:%S')
 
         schedule = Schedules(
             is_overnight_stay=False,
