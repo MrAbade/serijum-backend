@@ -1,10 +1,10 @@
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
-from ..models import Categories
+from ...models import Schedules
 
 
-class CategorySchema(SQLAlchemyAutoSchema):
+class ScheduleSchema(SQLAlchemyAutoSchema):
     class Meta:
-        model = Categories
+        model = Schedules
         include_relationships = True
         load_instance = True

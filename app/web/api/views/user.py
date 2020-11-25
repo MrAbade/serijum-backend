@@ -4,12 +4,12 @@ from datetime import timedelta
 from os import getenv
 from flask_jwt_extended.utils import get_jwt_identity
 
-from ..models import Users
+from ...models import Users
 
 from marshmallow.exceptions import ValidationError
 from sqlalchemy.exc import IntegrityError
 from psycopg2.errors import UniqueViolation
-from ...error_handling import UnauthorizedUser
+from ....error_handling import UnauthorizedUser
 
 from ..schemas.users import UserSchema
 

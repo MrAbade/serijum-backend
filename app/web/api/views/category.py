@@ -1,11 +1,11 @@
 from flask import Blueprint, request, current_app, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
-from ...error_handling import UnauthorizedUser
-from ...error_handling import IdWasNotFound
+from ....error_handling import UnauthorizedUser
+from ....error_handling import IdWasNotFound
 
-from ..models import Users
-from ..models import Categories
+from ...models import Users
+from ...models import Categories
 
 bp_category = Blueprint('category', __name__, url_prefix='/api/v1/category')
 

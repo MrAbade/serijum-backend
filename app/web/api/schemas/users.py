@@ -1,6 +1,6 @@
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
-from ..models import Users
+from ...models import Users
 
 
 class UserSchema(SQLAlchemyAutoSchema):

@@ -5,10 +5,10 @@ from flask.json import jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 from sqlalchemy.exc import IntegrityError
-from ...error_handling import UnauthorizedUser
+from ....error_handling import UnauthorizedUser
 
-from ..models import Suites
-from ..models import Users
+from ...models import Suites
+from ...models import Users
 
 from ..schemas.suites import SuiteSchema
 

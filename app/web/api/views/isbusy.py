@@ -3,7 +3,7 @@ from flask_jwt_extended import jwt_required
 
 from ..schemas.schedules import ScheduleSchema
 
-from ..models import Schedules
+from ...models import Schedules
 
 
 bp_isbusy = Blueprint('isbusy', __name__, url_prefix='/api/v1/isbusy')
