@@ -2,10 +2,10 @@ from flask import Blueprint, current_app, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from datetime import datetime
 
-from ...error_handling import IdWasNotFound
+from ....error_handling import IdWasNotFound
 
-from ..models import Schedules
-from ..models import Suites
+from ...models import Schedules
+from ...models import Suites
 
 from ..schemas.schedules import ScheduleSchema
 

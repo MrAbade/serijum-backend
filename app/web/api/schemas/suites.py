@@ -1,6 +1,6 @@
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
-from ..models import Suites
+from ...models import Suites
 
 
 class SuiteSchema(SQLAlchemyAutoSchema):
