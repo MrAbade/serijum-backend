@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 from pathlib import Path
 from os import getenv
 
+
 config = {
     'development': 'DevelopmentConfig',
     'test': 'TestingConfig',
@@ -23,3 +24,4 @@ def configure(app, default_config):
     print(getenv('FLASK_CONFIGURATION'))
 
     app.config.from_object(f'config.{configuration}')
+
