@@ -1,0 +1,21 @@
+{% macro menu(page=1) %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            {% if page == 1 %}
+            <a class="nav-item nav-link active" href="#">Suites Reservadas</a>
+            <a class="nav-item nav-link" href="#">Features</a>
+            <a class="nav-item nav-link" href="#">Pricing</a>
+            {% elif page == 2 %}
+            <a class="nav-item nav-link" href="#">Suites Reservadas</a>
+            <a class="nav-item nav-link active" href="#">Features</a>
+            <a class="nav-item nav-link" href="#">Pricing</a>
+            {% else %}
+            <a class="nav-item nav-link" href="#">Suites Reservadas</a>
+            <a class="nav-item nav-link" href="#">Features</a>
+            <a class="nav-item nav-link active" href="#">Pricing</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+{% endmacro %}
