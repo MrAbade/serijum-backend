@@ -1,4 +1,3 @@
-from time import strftime
 from flask import Blueprint, render_template, current_app, jsonify
 from datetime import datetime, timedelta
 
@@ -50,7 +49,6 @@ def format_date(date):
         return None
 
     return date.strftime('%d/%m/%Y %H:%M:%S')
-
 
 
 @bp_admin.route('/', methods=['GET'])
