@@ -64,6 +64,9 @@ def index():
         JOIN users ON users.id=schedules.user_id
         """)
 
+        if not query.fetchall():
+            return jsonify(list())
+
         serialized_reservations = (
             {key: value for key, value in zip(query.keys(), row)}
             for row in query.fetchall()
