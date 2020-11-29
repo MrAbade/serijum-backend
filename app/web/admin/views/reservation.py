@@ -51,7 +51,6 @@ def format_date(date):
     return date.strftime('%d/%m/%Y %H:%M:%S')
 
 
-
 @bp_admin.route('/', methods=['GET'])
 def index():
     try:
