@@ -1,11 +1,9 @@
 from secrets import token_hex
-from pathlib import Path
-from os.path import join
-from pathlib import Path
+from os.path import join, abspath, dirname
 
-BASE_PATH = Path('resources').absolute()
-TEMPLATES_FOLDER = join(BASE_PATH, 'templates')
-STATIC_FOLDER = join(BASE_PATH, 'static')
+BASE_PATH = abspath(dirname(__file__))
+TEMPLATES_FOLDER = join(BASE_PATH, 'resources', 'templates')
+STATIC_FOLDER = join(BASE_PATH, 'resources', 'static')
 
 
 class Config:
