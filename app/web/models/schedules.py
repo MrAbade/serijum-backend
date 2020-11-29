@@ -6,7 +6,7 @@ class Schedules(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     is_overnight_stay = db.Column(db.Boolean, nullable=False)
-    date_of_overnight_stay = db.Column(db.Date, nullable=True)
+    date_of_overnight_stay = db.Column(db.DateTime, nullable=True)
     entry_datetime = db.Column(db.DateTime, nullable=True)
     exit_datetime = db.Column(db.DateTime, nullable=True)
 
