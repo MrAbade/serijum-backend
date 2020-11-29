@@ -1,4 +1,3 @@
-from time import strftime
 from flask import Blueprint, render_template, current_app, jsonify
 from datetime import datetime, timedelta
 
@@ -64,6 +63,9 @@ def index():
         JOIN schedules ON schedules.suite_id=suites.id
         JOIN users ON users.id=schedules.user_id
         """)
+
+        if not query.fetchall():
+            return jsonify(list())
 
         serialized_reservations = (
             {key: value for key, value in zip(query.keys(), row)}
