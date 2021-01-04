@@ -1,5 +1,6 @@
 category_id,suite_number,suite_name
-1,6,suite,
+1,5,suite,
+1,7,suite,
 1,8,suite,
 1,9,suite,
 1,10,suite,
@@ -9,8 +10,8 @@ category_id,suite_number,suite_name
 1,17,suite,
 2,13,suite,
 2,15,suite,
-3,18,suite,
-3,19,suite,
+2,18,suite,
+2,19,suite,
 3,12,suite,
 3,20,suite,
 3,21,suite,

@@ -1,0 +1,84 @@
+{% extends 'base.html.j2' %}
+
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/book_suite.css') }}">
+{% endblock %}
+
+
+{% block content %}
+    <form method="POST">
+        {{ form.csrf_token }}
+        <h2>Marcar Agendamento</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, msg in messages %}
+                <div class="alert alert-{{'danger' if category == 'error' else 'info'}}" role="alert">
+                    {{ msg }}
+                </div>
+            {% endfor %}
+        {% endwith %}
+
+        <div class="form-group">
+            {{ form.name.label }}
+            {{ form.name(class_="form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.email.label }}
+            {{ form.email(class_="form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.suite_number.label }}
+            {{ form.suite_number(class_="form-control") }}
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-lg-6">
+                {{ form.entry_hour.label }}
+                {{ form.entry_hour() }}
+            </div>
+
+            <div class="form-group col-lg-6">
+                {{ form.hours_amount.label(class_="hours_amount_label") }}
+                {{ form.hours_amount() }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-check">
+                {{ form.is_overnight_stay(class_="form-check-input") }}
+                {{ form.is_overnight_stay.label(class_="form-check-label") }}
+            </div>
+        </div>
+        
+        <div class="form-group">
+            {{ form.submit(class_="btn btn-primary") }}
+        </div>
+    </form>
+{% endblock content %}
+
+
+{% block scripts %}
+    {{ super() }}
+    <script>
+        setTimeout(function() {
+            $('.alert').slideUp(300);
+        }, 3000);
+
+        const checkbox = document.getElementById("is_overnight_stay");
+        checkbox.addEventListener('change', function() {
+            const hours_amount = document.getElementById("hours_amount");
+            const hours_amount_label = document.querySelector(".hours_amount_label")
+            if(!hours_amount.disabled) {
+                hours_amount_label.style.color = '#888888';
+                hours_amount.disabled = true;
+            } else {
+                hours_amount_label.style.color = '#333333';
+                hours_amount.disabled = false;
+            }
+        });
+    </script>
+{% endblock %}
