@@ -1,0 +1,78 @@
+{% extends 'base.html.j2' %}
+
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/suites.css') }}">
+{% endblock %}
+
+
+{% block title %}Suites{% endblock %}
+
+
+{% block navbar %}{{ super() }}{% endblock %}
+
+
+{% block content %}
+    {{ super() }}
+
+    <header>
+        <div class="legend">
+            <p>Amarelo:</p>
+            <p>Verde:</p>
+            <p>Vermelho:</p>
+        </div>
+        <div class="values">
+            <p>Suite Ocupada</p>
+            <p>Suite Reservada</p>
+            <p>Reserva Concluída</p>
+        </div>
+    </header>
+
+    <div class="content">
+        {% for reservation_list in reservation_categories if reservation_list %}
+            {% if reservation_list[0].active == 0 %}
+                <span class="reservation-description">Reservas Passadas</span>
+            {% elif reservation_list[0].active == 1 %}
+                <span class="reservation-description">Reservas Futuras</span>
+            {% else %}
+                <span class="reservation-description">Suites Ocupadas</span>
+            {% endif %}
+            {% for reservation in reservation_list %}
+                {% if reservation.active == 0 %}
+                    <div class="reservation reservation-already-passed {{
+                        'first-group-card' if loop.index==1 else ''
+                    }}">
+                {% elif reservation.active == 1 %}
+                    <div class="reservation reservation-active {{
+                        'first-group-card' if loop.index==1 else ''
+                    }}">
+                {% else %}
+                    <div class="reservation suite-in-use {{
+                        'first-group-card' if loop.index==1 else ''
+                    }}">
+                {% endif %}
+                        <h3>Suite: {{reservation.suite_number}}</h3>
+                        {% if reservation.is_overnight_stay %}
+                            <div class="reservation-item">
+                                <span>Pernoite para dia: </span><p>{{reservation.date_of_overnight_stay}}</p>
+                            </div>
+                        {% else %}
+                            <div class="reservation-item">
+                                <span>Entrada: </span><p>{{reservation.entry_datetime}}</p>
+                            </div>
+                            <div class="reservation-item">
+                                <span>Saída: </span><p>{{reservation.exit_datetime}}</p>
+                            </div>
+                        {% endif %}
+                        <div class="reservation-item">
+                            <span>Nome do cliente: </span><p>{{reservation.client_name}}</p>
+                        </div>
+                        <div class="reservation-item">
+                            <span>Email do cliente: </span><p>{{reservation.email}}</p>
+                        </div>
+                    </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}

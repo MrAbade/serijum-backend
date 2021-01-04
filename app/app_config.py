@@ -24,4 +24,3 @@ def configure(app, default_config):
     print(getenv('FLASK_CONFIGURATION'))
 
     app.config.from_object(f'config.{configuration}')
-

@@ -11,6 +11,7 @@ class Config:
     TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JWT_SECRET_KEY = token_hex(32)
+    SECRET_KEY = token_hex(32)
 
 
 class DevelopmentConfig(Config):

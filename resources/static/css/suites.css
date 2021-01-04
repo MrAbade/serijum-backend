@@ -1,0 +1,97 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content span {
+    font-size: 14pt;
+}
+
+header {
+    position: absolute;
+    right: 1vw;
+    display: flex;
+    flex-direction: row;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+header .legend {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: larger;
+    margin-right: 5px;
+    color: #fff;
+}
+
+header .values {
+    display: flex;
+    flex-direction: column;
+    font-size: larger;
+    color: #c8c8c8;
+}
+
+.is-active {
+    background-color: #c8c8c8;
+}
+
+.reservation {
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+    margin: 15px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.first-group-card {
+    margin-top: 0px;
+}
+
+
+.reservation-description {
+    margin-bottom: 2px;
+    padding-bottom: 0px;
+}
+
+.reservation-item  {
+    flex-direction: row;
+}
+
+.reservation-already-passed {
+    background-color: #FF5565;
+    color: white;
+}
+
+.reservation-active {
+    background-color: #1dcc2e;
+    color: white;
+}
+
+.suite-in-use {
+    background-color: #eeff00;
+    color: #333;
+}
+
+h3 {
+    align-self: center;
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+span {
+    font-weight: bold;
+}
+
+p {
+    display: inline;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

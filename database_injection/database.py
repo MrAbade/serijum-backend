@@ -34,3 +34,4 @@ conn = connect(dbname=DATABASE, user=USER, password=PASSWORD, host=HOST)
 cursor = conn.cursor()
 
 insert_into_database(FILENAME, conn, cursor)
+
