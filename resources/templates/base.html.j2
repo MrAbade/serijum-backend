@@ -1,0 +1,55 @@
+{% extends 'bootstrap/base.html' %}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    {% block styles %}
+        {{ super() }}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    {% endblock %}
+</head>
+
+
+{% block navbar %}
+    <nav class="navbar navbar-default">
+        <a class="navbar-brand" href="{{ url_for('reservation.reserved_suites') }}">
+            <img src="{{ url_for('static', filename='icons/brand.png') }}" alt="Início">
+        </a>
+        <div class="menu-container">
+            <div class="menu">
+                <a href="{{ url_for('reservation.reserved_suites') }}"><li>Agendamentos</li></a>
+                <a href="{{ url_for('book_release.book_suite') }}"><li>Agendar</li></a>
+                {# <a href="{{ url_for('book_release.release') }}"><li>Liberar</li></a> #}
+            </div>
+            <div class="auth-button">
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('auth.logout') }}" class="nav-right"><li>Log out</li></a>
+                {% else %}
+                <a href="{{ url_for('auth.login') }}" class="nav-right"><li>Log in</li></a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, msg in messages %}
+        <div class="alert alert-{{'danger' if category == 'error' else 'info'}}" role="alert">
+            {{ msg }}
+        </div>
+    {% endfor %}
+{% endwith %}
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script>
+        setTimeout(function() {
+            $('.alert').slideUp(300);
+        }, 3000);
+    </script>
+{% endblock %}

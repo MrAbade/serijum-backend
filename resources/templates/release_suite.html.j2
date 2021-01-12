@@ -1,0 +1,18 @@
+{% extends 'base.html.j2' %}
+
+{% block navbar %}{{ super() }}{% endblock navbar %}
+
+{% block content %}
+<form class="book-suite-form" action="{{url_for('book_release.release_suite')}}" method="POST">
+    <div class="form-col">
+        <div class="row form-group">
+            <label for="">Número da Suíte: </label>
+            <input class="form-control" type="number">
+        </div>
+
+        <div class="row">
+            <button class="book-suite-btn btn btn-primary" type="submit">Enviar</button>
+        </div>
+    </div>
+</form>
+{% endblock content %}

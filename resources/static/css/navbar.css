@@ -1,0 +1,68 @@
+nav .menu-container {
+    display: grid;
+    grid-template-columns: 90% 10%;
+    height: 12vh;
+}
+
+nav .menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+}
+
+nav .menu a {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 18pt;
+    font-weight: bolder;
+    border-radius: 10px;
+    transition: all 100ms ease-in-out;
+}
+
+nav .menu a:hover {
+    color: #BBBBBB;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav img {
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
+    max-height: 10vw;
+    max-width: 10vh;
+    border-radius: 10px;
+}
+
+.auth-button {
+    display: flex;
+    border-left: 1px solid #dddddd;
+    list-style: none;
+    padding-left: 1vw;
+}
+
+.auth-button a {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    text-decoration: none;
+    font-size: 18pt;
+    color: #888888;
+    transition: all 100ms ease-in-out;
+}
+
+.auth-button a:hover {
+    color: #333;
+}
