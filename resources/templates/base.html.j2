@@ -21,7 +21,7 @@
             <div class="menu">
                 <a href="{{ url_for('reservation.reserved_suites') }}"><li>Agendamentos</li></a>
                 <a href="{{ url_for('book_release.book_suite') }}"><li>Agendar</li></a>
-                <a href="{{ url_for('book_release.release') }}"><li>Liberar</li></a>
+                {# <a href="{{ url_for('book_release.release') }}"><li>Liberar</li></a> #}
             </div>
             <div class="auth-button">
                 {% if current_user.is_authenticated %}
